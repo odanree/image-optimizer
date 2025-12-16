@@ -70,6 +70,9 @@ class Core {
 	 * Initialize the plugin
 	 */
 	private function init() {
+		// Create database tables if they don't exist
+		Database::create_tables();
+		
 		// Load translations
 		load_plugin_textdomain(
 			'image-optimizer',
@@ -177,9 +180,8 @@ class Core {
 	 * Plugin activation hook
 	 */
 	public static function activate() {
-		// Create database tables
-		Database::create_tables();
-
+		// Database tables will be created on plugins_loaded when autoloader is ready
+		
 		// Set default options
 		if ( ! get_option( 'image_optimizer_settings' ) ) {
 			update_option( 'image_optimizer_settings', array(

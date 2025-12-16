@@ -27,12 +27,12 @@ class Autoloader {
 	 */
 	public static function autoload( $class ) {
 		// Only autoload ImageOptimizer classes
-		if ( 0 !== strpos( $class, __NAMESPACE__ ) ) {
+		if ( 0 !== strpos( $class, 'ImageOptimizer' ) ) {
 			return;
 		}
 
 		// Remove the namespace prefix
-		$class_name = str_replace( __NAMESPACE__ . '\\', '', $class );
+		$class_name = str_replace( 'ImageOptimizer\\', '', $class );
 
 		// Convert namespace to file path
 		$file = IMAGE_OPTIMIZER_PATH . 'includes/class-' . strtolower( str_replace( '\\', '/', $class_name ) ) . '.php';
@@ -43,6 +43,4 @@ class Autoloader {
 		}
 	}
 }
-
-// Register the autoloader
-Autoloader::register();
+?>

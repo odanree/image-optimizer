@@ -36,10 +36,29 @@ define( 'IMAGE_OPTIMIZER_BASENAME', plugin_basename( __FILE__ ) );
 // Include the autoloader
 require_once IMAGE_OPTIMIZER_PATH . 'includes/class-autoloader.php';
 
+// Register the autoloader
+\ImageOptimizer\Autoloader::register();
+
+// Manually include core classes to ensure they're loaded
+require_once IMAGE_OPTIMIZER_PATH . 'includes/core/class-database.php';
+require_once IMAGE_OPTIMIZER_PATH . 'includes/core/class-optimizer.php';
+require_once IMAGE_OPTIMIZER_PATH . 'includes/core/class-api.php';
+require_once IMAGE_OPTIMIZER_PATH . 'includes/admin/class-dashboard.php';
+require_once IMAGE_OPTIMIZER_PATH . 'includes/admin/class-settings.php';
+
 /**
  * The main plugin class
  */
 use ImageOptimizer\Core;
+use ImageOptimizer\Core\API;
+
+/**
+ * Initialize REST API early
+ */
+add_action( 'rest_api_init', function() {
+	$api = new API();
+	$api->register_routes();
+}, 1 );
 
 /**
  * Activate the plugin
@@ -54,6 +73,6 @@ register_deactivation_hook( __FILE__, array( Core::class, 'deactivate' ) );
 /**
  * Initialize the plugin
  */
-add_action( 'plugins_loaded', function() {
+add_action( 'init', function() {
 	Core::get_instance();
-} );
+}, 20 );
