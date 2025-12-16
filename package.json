@@ -1,0 +1,28 @@
+{
+  "name": "image-optimizer",
+  "version": "1.0.0",
+  "description": "Advanced image optimization WordPress plugin with compression, lazy loading, and WebP conversion.",
+  "main": "image-optimizer.php",
+  "scripts": {
+    "setup-hooks": "bash setup-commitlint.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/odanree/image-optimizer.git"
+  },
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "image-optimization",
+    "performance",
+    "webp"
+  ],
+  "author": "Danh Le",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@commitlint/cli": "^18.0.0",
+    "@commitlint/config-conventional": "^18.0.0",
+    "husky": "^8.0.0"
+  }
+}
