@@ -10,24 +10,52 @@
 		const container = document.getElementById('image-optimizer-dashboard');
 		
 		if (!container) {
+			console.log('Dashboard container not found');
+			return;
+		}
+
+		// Verify imageOptimizerData is available
+		if (typeof imageOptimizerData === 'undefined') {
+			console.error('imageOptimizerData not found');
+			container.innerHTML = '<p>Error: Plugin data not loaded. Please refresh the page.</p>';
 			return;
 		}
 
 		// Fetch images from REST API
 		const restUrl = imageOptimizerData.rest_url || '/wp-json/image-optimizer/v1/';
 		
-		fetch(restUrl + 'images', {
+		// Try direct /wp-json/ URL first, fall back to index.php?rest_route= if needed
+		let fetchUrl = restUrl + 'images';
+		
+		// If restUrl contains "index.php", normalize it for direct wp-json access
+		if (restUrl.includes('index.php')) {
+			fetchUrl = '/wp-json/image-optimizer/v1/images';
+		}
+		
+		console.log('REST URL:', restUrl);
+		console.log('Fetch URL:', fetchUrl);
+		
+		fetch(fetchUrl, {
 			method: 'GET',
 			headers: {
-				'X-WP-Nonce': imageOptimizerData.nonce
+				'Content-Type': 'application/json',
+				'X-WP-Nonce': imageOptimizerData.nonce || ''
 			}
 		})
-		.then(response => response.json())
+		.then(response => {
+			console.log('Response status:', response.status);
+			if (!response.ok) {
+				throw new Error('HTTP error status: ' + response.status);
+			}
+			return response.json();
+		})
 		.then(data => {
+			console.log('Data received:', data);
 			// Handle both array and object responses
 			const images = Array.isArray(data) ? data : (data.images || []);
 			
 			if (!images || images.length === 0) {
+				console.log('No images found');
 				container.innerHTML = '<p>No images found in your media library.</p>';
 				return;
 			}

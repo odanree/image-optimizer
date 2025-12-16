@@ -51,7 +51,7 @@ class Dashboard {
 			'image-optimizer-dashboard',
 			'imageOptimizerData',
 			array(
-				'nonce' => wp_create_nonce( 'image_optimizer_nonce' ),
+				'nonce' => wp_create_nonce( 'wp_rest' ),
 				'rest_url' => rest_url( 'image-optimizer/v1/' ),
 			)
 		);
