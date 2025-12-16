@@ -75,9 +75,37 @@ Complete REST API for programmatic access:
 image-optimizer/
 ├── image-optimizer.php              # Main plugin file
 ├── README.md                        # User documentation
-├── DEVELOPMENT.md                   # Developer guide
 ├── CONTRIBUTING.md                  # Contribution guidelines
 ├── CHANGELOG.md                     # Version history
+├── LICENSE                          # GPL v2+ license
+├── docs/
+│   ├── DEVELOPMENT.md               # Developer guide & architecture
+│   └── COMMIT_CONVENTION.md         # Git commit standards
+├── includes/
+│   ├── class-autoloader.php         # PSR-4 autoloader
+│   ├── class-core.php               # Main plugin class (Singleton)
+│   ├── core/
+│   │   ├── class-api.php            # REST API endpoints
+│   │   ├── class-database.php       # Database layer
+│   │   └── class-optimizer.php      # Image optimization engine
+│   └── admin/
+│       ├── class-dashboard.php      # Admin dashboard
+│       └── class-settings.php       # Settings page
+├── assets/
+│   ├── css/
+│   │   ├── admin.css                # Admin styles
+│   │   ├── public.css               # Frontend styles
+│   │   └── dashboard.css            # Dashboard gallery styles
+│   └── js/
+│       ├── admin.js                 # Admin functionality
+│       ├── public.js                # Frontend functionality
+│       ├── dashboard.js             # Dashboard interactions
+│       └── lazy-load.js             # Lazy loading implementation
+├── languages/                       # Localization files
+├── admin/                           # Additional admin files
+├── public/                          # Frontend classes
+└── package.json                     # NPM dependencies & scripts
+```
 ├── composer.json                    # Project metadata
 ├── LICENSE                          # GPL v2 license
 ├── .gitignore                       # Git ignore patterns
@@ -267,12 +295,13 @@ add_action('rest_api_init', function() {
 });
 ```
 
-## �� Documentation
+## 📚 Documentation
 
 - **[README.md](README.md)** - User guide and features
-- **[DEVELOPMENT.md](DEVELOPMENT.md)** - Developer guide and architecture
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines
 - **[CHANGELOG.md](CHANGELOG.md)** - Version history
+- **[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)** - Developer guide and architecture
+- **[docs/COMMIT_CONVENTION.md](docs/COMMIT_CONVENTION.md)** - Git commit standards
 
 ## 🚀 Roadmap
 
@@ -343,7 +372,7 @@ A: Requires WordPress 5.0+ and PHP 7.4+. Tested up to WordPress 6.9.
 A: Typically 30-50% image size reduction depending on quality settings.
 
 **Q: Can I extend it?**
-A: Absolutely! It's built with extensibility in mind. Check [DEVELOPMENT.md](DEVELOPMENT.md) for examples.
+A: Absolutely! It's built with extensibility in mind. Check [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) for examples.
 
 **Q: Is it actively maintained?**
 A: Yes! Regular updates and security patches are released.
