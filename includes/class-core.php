@@ -88,7 +88,6 @@ class Core {
 		// Add WordPress hooks
 		add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		add_filter( 'wp_image_editors', array( $this, 'add_image_editors' ) );
 	}
 
 	/**
@@ -164,16 +163,6 @@ class Core {
 			IMAGE_OPTIMIZER_VERSION,
 			true
 		);
-	}
-
-	/**
-	 * Add custom image editors
-	 *
-	 * @param array $editors The list of image editors.
-	 * @return array
-	 */
-	public function add_image_editors( $editors ) {
-		return array_merge( array( 'ImageOptimizer\Core\Image_Editor' ), $editors );
 	}
 
 	/**
