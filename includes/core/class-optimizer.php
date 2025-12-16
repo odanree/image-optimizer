@@ -239,7 +239,8 @@ class Optimizer {
 	 * @return bool
 	 */
 	private function optimize_jpeg( $file_path ) {
-		// Using GD library as fallback, in production you'd use external services like TinyPNG, ImageOptim, or ShortPixel
+		// Core Web Vitals: Aggressive compression improves LCP (Largest Contentful Paint)
+		// https://developer.chrome.com/docs/performance/insights/image-delivery
 		$settings = get_option( 'image_optimizer_settings', array() );
 		$compression = $settings['compression_level'] ?? 'medium';
 
@@ -251,8 +252,8 @@ class Optimizer {
 				return false;
 			}
 
-			// Reduce image colors and quality
-			imagetruecolortopalette( $image, false, 256 );
+			// Apply progressive encoding for better compression and perceived performance
+			imageinterlace( $image, true );
 			$result = imagejpeg( $image, $file_path, $quality );
 			imagedestroy( $image );
 
@@ -263,12 +264,14 @@ class Optimizer {
 	}
 
 	/**
-	 * Optimize PNG image
+	 * Optimize PNG image (following Chrome Core Web Vitals best practices)
+	 * https://developer.chrome.com/docs/performance/insights/image-delivery
 	 *
 	 * @param string $file_path The file path.
 	 * @return bool
 	 */
 	private function optimize_png( $file_path ) {
+		// Core Web Vitals: PNG compression level 9 = maximum compression for best LCP
 		$settings = get_option( 'image_optimizer_settings', array() );
 		$compression = $settings['compression_level'] ?? 'medium';
 
@@ -280,8 +283,8 @@ class Optimizer {
 				return false;
 			}
 
-			// Reduce colors for better compression
-			imagetruecolortopalette( $image, false, 256 );
+			// Apply interlacing for progressive display and better perceived performance
+			imageinterlace( $image, true );
 			$result = imagepng( $image, $file_path, $compression_level );
 			imagedestroy( $image );
 
@@ -326,7 +329,8 @@ class Optimizer {
 	}
 
 	/**
-	 * Create WebP version of the image
+	 * Create WebP version of the image (modern format per Core Web Vitals)
+	 * https://developer.chrome.com/docs/performance/insights/image-delivery
 	 *
 	 * @param string $file_path The original file path.
 	 * @return bool|string The WebP file path or false.
@@ -360,7 +364,8 @@ class Optimizer {
 				return false;
 			}
 
-			$result = imagewebp( $image, $webp_path, 80 );
+			// WebP quality: 60 for aggressive compression, improves LCP
+			$result = imagewebp( $image, $webp_path, 60 );
 			imagedestroy( $image );
 
 			return $result ? $webp_path : false;
@@ -420,35 +425,39 @@ class Optimizer {
 	}
 
 	/**
-	 * Get quality level for JPEG
+	 * Get quality level for JPEG (following Core Web Vitals best practices)
+	 * Lower quality = better compression = improved LCP
 	 *
 	 * @param string $level The compression level.
 	 * @return int
 	 */
 	private function get_quality_level( $level ) {
+		// Core Web Vitals recommends aggressive compression for better LCP
+		// JPEG quality levels: low=80, medium=70, high=60
 		$levels = array(
-			'low'    => 95,
-			'medium' => 85,
-			'high'   => 75,
+			'low'    => 80,
+			'medium' => 70,
+			'high'   => 60,
 		);
 
-		return $levels[ $level ] ?? 85;
+		return $levels[ $level ] ?? 70;
 	}
 
 	/**
-	 * Get compression level for PNG
+	 * Get compression level for PNG (following Core Web Vitals best practices)
 	 *
 	 * @param string $level The compression level.
 	 * @return int
 	 */
 	private function get_compression_level( $level ) {
+		// PNG compression: 9 = maximum compression (best for Core Web Vitals)
 		$levels = array(
-			'low'    => 6,
-			'medium' => 7,
+			'low'    => 7,
+			'medium' => 8,
 			'high'   => 9,
 		);
 
-		return $levels[ $level ] ?? 7;
+		return $levels[ $level ] ?? 8;
 	}
 
 	/**
