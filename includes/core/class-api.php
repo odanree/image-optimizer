@@ -217,13 +217,16 @@ class API {
 			$file_size = $attached_file ? filesize( $attached_file ) : 0;
 			$history = Database::get_optimization_history( $post->ID );
 			
+			// Only consider image as optimized if history exists and status is not 'reverted'
+			$is_optimized = ! empty( $history ) && ( ! isset( $history->status ) || $history->status !== 'reverted' );
+			
 			$images[] = array(
 				'id'              => $post->ID,
 				'title'           => $post->post_title,
 				'filename'        => basename( $attached_file ? $attached_file : '' ),
 				'url'             => wp_get_attachment_url( $post->ID ),
 				'size'            => $file_size,
-				'optimized'       => ! empty( $history ),
+				'optimized'       => $is_optimized,
 				'optimization'    => $history ? $this->format_history( $history ) : null,
 			);
 		}
