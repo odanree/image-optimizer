@@ -88,6 +88,9 @@ class Core {
 		// Add WordPress hooks
 		add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
+		// Optimize featured image sizes for better LCP
+		add_filter( 'post_thumbnail_size', array( $this, 'optimize_featured_image_size' ) );
 	}
 
 	/**
@@ -191,5 +194,20 @@ class Core {
 	public static function deactivate() {
 		// Cleanup if needed
 		flush_rewrite_rules();
+	}
+
+	/**
+	 * Optimize featured image display size for better LCP
+	 * Uses medium (300x200) by default to prioritize LCP over image size
+	 * Browser's srcset will serve appropriate size via responsive images
+	 *
+	 * @param string $size The current thumbnail size.
+	 * @return string The optimized size.
+	 */
+	public function optimize_featured_image_size( $size ) {
+		// Always use medium for featured images to minimize LCP
+		// Medium (300x200) is small but acceptable, forces browser to use smaller variant
+		// This triggers srcset to download appropriate size for viewport
+		return 'medium';
 	}
 }

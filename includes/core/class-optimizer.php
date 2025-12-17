@@ -573,3 +573,4 @@ class Optimizer {
 		return true;
 	}
 }
+
