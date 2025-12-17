@@ -24,13 +24,8 @@
 		// Fetch images from REST API
 		const restUrl = imageOptimizerData.rest_url || '/wp-json/image-optimizer/v1/';
 		
-		// Try direct /wp-json/ URL first, fall back to index.php?rest_route= if needed
+		// Use the REST URL directly - it's already properly formatted by WordPress
 		let fetchUrl = restUrl + 'images';
-		
-		// If restUrl contains "index.php", normalize it for direct wp-json access
-		if (restUrl.includes('index.php')) {
-			fetchUrl = '/wp-json/image-optimizer/v1/images';
-		}
 		
 		console.log('REST URL:', restUrl);
 		console.log('Fetch URL:', fetchUrl);
@@ -47,9 +42,17 @@
 			if (!response.ok) {
 				throw new Error('HTTP error status: ' + response.status);
 			}
-			return response.json();
+			return response.text();
 		})
-		.then(data => {
+		.then(text => {
+			console.log('Raw response:', text.substring(0, 200));
+			let data;
+			try {
+				data = JSON.parse(text);
+			} catch (e) {
+				console.error('JSON parse error:', e, 'Text:', text.substring(0, 500));
+				throw new Error('Invalid JSON response: ' + e.message);
+			}
 			console.log('Data received:', data);
 			// Handle both array and object responses
 			const images = Array.isArray(data) ? data : (data.images || []);

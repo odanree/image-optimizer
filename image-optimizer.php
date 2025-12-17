@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define plugin constants
-define( 'IMAGE_OPTIMIZER_VERSION', '1.0.0' );
+define( 'IMAGE_OPTIMIZER_VERSION', time() ); // Cache buster
 define( 'IMAGE_OPTIMIZER_PATH', plugin_dir_path( __FILE__ ) );
 define( 'IMAGE_OPTIMIZER_URL', plugin_dir_url( __FILE__ ) );
 define( 'IMAGE_OPTIMIZER_BASENAME', plugin_basename( __FILE__ ) );

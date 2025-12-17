@@ -32,18 +32,21 @@ class Dashboard {
 			return;
 		}
 
+		// Use current time as cache buster with microtime for maximum uniqueness
+		$cache_buster = str_replace( '.', '', microtime( true ) );
+
 		wp_enqueue_style(
 			'image-optimizer-dashboard',
-			IMAGE_OPTIMIZER_URL . 'assets/css/dashboard.css',
+			IMAGE_OPTIMIZER_URL . 'assets/css/dashboard.css?t=' . $cache_buster,
 			array(),
-			IMAGE_OPTIMIZER_VERSION
+			false
 		);
 
 		wp_enqueue_script(
 			'image-optimizer-dashboard',
-			IMAGE_OPTIMIZER_URL . 'assets/js/dashboard.js',
+			IMAGE_OPTIMIZER_URL . 'assets/js/dashboard.js?t=' . $cache_buster,
 			array(),
-			IMAGE_OPTIMIZER_VERSION,
+			false,
 			true
 		);
 
