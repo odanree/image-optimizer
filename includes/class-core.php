@@ -91,6 +91,9 @@ class Core {
 
 		// Optimize featured image sizes for better LCP
 		add_filter( 'post_thumbnail_size', array( $this, 'optimize_featured_image_size' ) );
+
+		// Remove srcset from featured images to prevent browser downloading larger variants
+		add_filter( 'wp_get_attachment_image', array( $this, 'remove_featured_image_srcset' ), 10, 5 );
 	}
 
 	/**
@@ -209,5 +212,31 @@ class Core {
 		// Medium (300x200) is small but acceptable, forces browser to use smaller variant
 		// This triggers srcset to download appropriate size for viewport
 		return 'medium';
+	}
+
+	/**
+	 * Remove srcset from featured images to force single size download
+	 * Prevents browser from upgrading to larger variants from srcset
+	 * Ensures only the small featured image is downloaded for LCP
+	 *
+	 * @param string $html The img tag HTML.
+	 * @param int    $attachment_id The attachment ID.
+	 * @param string $size The image size.
+	 * @param bool   $icon Whether it's an icon.
+	 * @param array  $attr The img attributes.
+	 * @return string The img tag without srcset attribute.
+	 */
+	public function remove_featured_image_srcset( $html, $attachment_id, $size, $icon, $attr ) {
+		// Only modify featured images (medium size)
+		if ( 'medium' !== $size || $icon ) {
+			return $html;
+		}
+
+		// Remove srcset and sizes attributes to force single image download
+		// This prevents the browser from downloading the full-resolution variant
+		$html = preg_replace( '/\s+srcset="[^"]*"/', '', $html );
+		$html = preg_replace( '/\s+sizes="[^"]*"/', '', $html );
+
+		return $html;
 	}
 }
