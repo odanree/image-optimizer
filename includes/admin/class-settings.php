@@ -37,14 +37,14 @@ class Settings {
 
 		add_settings_section(
 			'image-optimizer-general',
-			__( 'General Settings', 'image-optimizer' ),
+			__( 'General Settings', 'odr-image-optimizer' ),
 			array( $this, 'render_section' ),
 			'image-optimizer-settings'
 		);
 
 		add_settings_field(
 			'compression_level',
-			__( 'Compression Level', 'image-optimizer' ),
+			__( 'Compression Level', 'odr-image-optimizer' ),
 			array( $this, 'render_compression_field' ),
 			'image-optimizer-settings',
 			'image-optimizer-general'
@@ -52,7 +52,7 @@ class Settings {
 
 		add_settings_field(
 			'enable_webp',
-			__( 'Enable WebP Conversion', 'image-optimizer' ),
+			__( 'Enable WebP Conversion', 'odr-image-optimizer' ),
 			array( $this, 'render_webp_field' ),
 			'image-optimizer-settings',
 			'image-optimizer-general'
@@ -60,7 +60,7 @@ class Settings {
 
 		add_settings_field(
 			'enable_lazy_load',
-			__( 'Enable Lazy Loading', 'image-optimizer' ),
+			__( 'Enable Lazy Loading', 'odr-image-optimizer' ),
 			array( $this, 'render_lazy_load_field' ),
 			'image-optimizer-settings',
 			'image-optimizer-general'
@@ -68,7 +68,7 @@ class Settings {
 
 		add_settings_field(
 			'auto_optimize',
-			__( 'Auto-Optimize on Upload', 'image-optimizer' ),
+			__( 'Auto-Optimize on Upload', 'odr-image-optimizer' ),
 			array( $this, 'render_auto_optimize_field' ),
 			'image-optimizer-settings',
 			'image-optimizer-general'
@@ -120,7 +120,7 @@ class Settings {
 	 * Render settings section
 	 */
 	public function render_section() {
-		echo '<p>' . esc_html__( 'Configure image optimization settings.', 'image-optimizer' ) . '</p>';
+		echo '<p>' . esc_html__( 'Configure image optimization settings.', 'odr-image-optimizer' ) . '</p>';
 	}
 
 	/**
@@ -132,17 +132,17 @@ class Settings {
 		?>
 		<select name="image_optimizer_settings[compression_level]">
 			<option value="low" <?php selected( $value, 'low' ); ?>>
-				<?php esc_html_e( 'Low (Better Quality)', 'image-optimizer' ); ?>
+				<?php esc_html_e( 'Low (Better Quality)', 'odr-image-optimizer' ); ?>
 			</option>
 			<option value="medium" <?php selected( $value, 'medium' ); ?>>
-				<?php esc_html_e( 'Medium (Balanced)', 'image-optimizer' ); ?>
+				<?php esc_html_e( 'Medium (Balanced)', 'odr-image-optimizer' ); ?>
 			</option>
 			<option value="high" <?php selected( $value, 'high' ); ?>>
-				<?php esc_html_e( 'High (Maximum Compression)', 'image-optimizer' ); ?>
+				<?php esc_html_e( 'High (Maximum Compression)', 'odr-image-optimizer' ); ?>
 			</option>
 		</select>
 		<p class="description">
-			<?php esc_html_e( 'Select the compression level. Higher compression means smaller files but may reduce image quality.', 'image-optimizer' ); ?>
+			<?php esc_html_e( 'Select the compression level. Higher compression means smaller files but may reduce image quality.', 'odr-image-optimizer' ); ?>
 		</p>
 		<?php
 	}
@@ -155,7 +155,7 @@ class Settings {
 		$checked = ! empty( $settings['enable_webp'] );
 		?>
 		<input type="checkbox" name="image_optimizer_settings[enable_webp]" value="1" <?php checked( $checked ); ?>>
-		<label><?php esc_html_e( 'Automatically convert images to WebP format for better compression', 'image-optimizer' ); ?></label>
+		<label><?php esc_html_e( 'Automatically convert images to WebP format for better compression', 'odr-image-optimizer' ); ?></label>
 		<?php
 	}
 
@@ -167,7 +167,7 @@ class Settings {
 		$checked = ! empty( $settings['enable_lazy_load'] );
 		?>
 		<input type="checkbox" name="image_optimizer_settings[enable_lazy_load]" value="1" <?php checked( $checked ); ?>>
-		<label><?php esc_html_e( 'Enable lazy loading for images', 'image-optimizer' ); ?></label>
+		<label><?php esc_html_e( 'Enable lazy loading for images', 'odr-image-optimizer' ); ?></label>
 		<?php
 	}
 
@@ -179,7 +179,7 @@ class Settings {
 		$checked = ! empty( $settings['auto_optimize'] );
 		?>
 		<input type="checkbox" name="image_optimizer_settings[auto_optimize]" value="1" <?php checked( $checked ); ?>>
-		<label><?php esc_html_e( 'Automatically optimize images on upload', 'image-optimizer' ); ?></label>
+		<label><?php esc_html_e( 'Automatically optimize images on upload', 'odr-image-optimizer' ); ?></label>
 		<?php
 	}
 
@@ -189,7 +189,7 @@ class Settings {
 	public static function render() {
 		?>
 		<div class="wrap image-optimizer-settings-wrap">
-			<h1><?php esc_html_e( 'Image Optimizer Settings', 'image-optimizer' ); ?></h1>
+			<h1><?php esc_html_e( 'ODR Image Optimizer Settings', 'odr-image-optimizer' ); ?></h1>
 			<form method="post" action="options.php">
 				<?php
 				settings_fields( 'image-optimizer-settings' );

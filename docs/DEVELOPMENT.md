@@ -1,10 +1,10 @@
-# Image Optimizer - Developer Guide
+# ODR Image Optimizer - Developer Guide
 
 ## Project Structure
 
 ```
-image-optimizer/
-├── image-optimizer.php          # Main plugin file
+odr-image-optimizer/
+├── odr-image-optimizer.php      # Main plugin file
 ├── README.md                    # User documentation
 ├── DEVELOPMENT.md               # This file
 ├── LICENSE                      # GPL v2 license

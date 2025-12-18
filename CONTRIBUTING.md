@@ -1,6 +1,6 @@
-# Contributing to Image Optimizer
+# Contributing to ODR Image Optimizer
 
-Thank you for considering a contribution to Image Optimizer! This document provides guidelines and instructions for contributing.
+Thank you for considering a contribution to ODR Image Optimizer! This document provides guidelines and instructions for contributing.
 
 ## Code of Conduct
 

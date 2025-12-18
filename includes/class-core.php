@@ -72,13 +72,6 @@ class Core {
 	private function init() {
 		// Create database tables if they don't exist
 		Database::create_tables();
-		
-		// Load translations
-		load_plugin_textdomain(
-			'image-optimizer',
-			false,
-			dirname( IMAGE_OPTIMIZER_BASENAME ) . '/languages'
-		);
 
 		// Initialize components
 		$this->init_admin();
@@ -125,8 +118,8 @@ class Core {
 	 */
 	public function register_admin_menu() {
 		add_menu_page(
-			__( 'Image Optimizer', 'image-optimizer' ),
-			__( 'Image Optimizer', 'image-optimizer' ),
+			__( 'ODR Image Optimizer', 'odr-image-optimizer' ),
+			__( 'ODR Image Optimizer', 'odr-image-optimizer' ),
 			'manage_options',
 			'image-optimizer',
 			array( $this, 'render_dashboard' ),
@@ -136,8 +129,8 @@ class Core {
 
 		add_submenu_page(
 			'image-optimizer',
-			__( 'Settings', 'image-optimizer' ),
-			__( 'Settings', 'image-optimizer' ),
+			__( 'Settings', 'odr-image-optimizer' ),
+			__( 'Settings', 'odr-image-optimizer' ),
 			'manage_options',
 			'image-optimizer-settings',
 			array( $this, 'render_settings' )

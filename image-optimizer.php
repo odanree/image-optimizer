@@ -8,15 +8,15 @@
  * @link              https://danhle.net
  *
  * @wordpress-plugin
- * Plugin Name:       Image Optimizer
- * Plugin URI:        https://wordpress.org/plugins/image-optimizer/
+ * Plugin Name:       ODR Image Optimizer
+ * Plugin URI:        https://wordpress.org/plugins/odr-image-optimizer/
  * Description:       Professional image optimization with intelligent compression, WebP conversion, and lazy loading.
  * Version:           1.0.0
  * Author:            Danh Le
  * Author URI:        https://danhle.net
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       image-optimizer
+ * Text Domain:       odr-image-optimizer
  * Domain Path:       /languages
  * Requires at least: 5.0
  * Requires PHP:      7.4

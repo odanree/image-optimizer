@@ -66,7 +66,7 @@ class Dashboard {
 	public static function render() {
 		?>
 		<div class="wrap image-optimizer-wrap">
-			<h1><?php esc_html_e( 'Image Optimizer', 'image-optimizer' ); ?></h1>
+			<h1><?php esc_html_e( 'ODR Image Optimizer', 'odr-image-optimizer' ); ?></h1>
 			<div id="image-optimizer-dashboard"></div>
 		</div>
 		<?php

@@ -1,6 +1,6 @@
 # WordPress.org Plugin Directory - Submission Guide
 
-> Checklist and preparation guide for submitting Image Optimizer to the official WordPress Plugin Directory at plugins.wordpress.org
+> Checklist and preparation guide for submitting ODR Image Optimizer to the official WordPress Plugin Directory at plugins.wordpress.org
 
 **Status:** Ready for submission  
 **Target Release:** Q1 2026
@@ -46,15 +46,15 @@ Update version numbers and compatibility in `image-optimizer.php`:
 ```php
 <?php
 /**
- * Plugin Name: Image Optimizer
- * Plugin URI: https://wordpress.org/plugins/image-optimizer/
+ * Plugin Name: ODR Image Optimizer
+ * Plugin URI: https://wordpress.org/plugins/odr-image-optimizer/
  * Description: Professional image compression, WebP conversion, and lazy loading
  * Version: 1.0.0
  * Author: Danh Le
  * Author URI: https://danhle.net
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: image-optimizer
+ * Text Domain: odr-image-optimizer
  * Domain Path: /languages
  * Requires at least: 5.0
  * Requires PHP: 7.4
@@ -79,9 +79,9 @@ WordPress.org uses specific README format. Convert `README.md` to WordPress.org 
 Create `readme.txt` in root (WordPress.org requires this):
 
 ```
-=== Image Optimizer ===
+=== ODR Image Optimizer ===
 Contributors: odanree
-Tags: image-optimization, image-compression, webp, lazy-loading, performance
+Tags: image-optimization, image-compression, webp, lazy-loading, performance, odr-image-optimizer
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4

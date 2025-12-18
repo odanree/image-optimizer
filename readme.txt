@@ -1,7 +1,7 @@
-=== Image Optimizer ===
+=== ODR Image Optimizer ===
 Contributors: odanree
 Donate link: https://danhle.net/
-Tags: image-optimization, image-compression, webp, lazy-loading, performance, image-optimizer, optimization
+Tags: image-optimization, image-compression, webp, lazy-loading, performance, odr-image-optimizer, optimization
 Requires at least: 5.0
 Tested up to: 6.9
 Stable tag: 1.0.0
@@ -13,7 +13,7 @@ Professional WordPress image optimization with intelligent compression, WebP con
 
 == Description ==
 
-Image Optimizer is a production-ready WordPress plugin demonstrating enterprise-level development practices. It provides intelligent image compression, WebP conversion, lazy loading, and REST API integration for modern image optimization workflows.
+ODR Image Optimizer is a production-ready WordPress plugin demonstrating enterprise-level development practices. It provides intelligent image compression, WebP conversion, lazy loading, and REST API integration for modern image optimization workflows.
 
 **Key Features:**
 

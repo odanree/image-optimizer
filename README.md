@@ -1,4 +1,4 @@
-# Image Optimizer
+# ODR Image Optimizer
 
 > Professional WordPress image optimization plugin showcasing advanced PHP, OOP, and WordPress development skills.
 
@@ -9,7 +9,7 @@
 
 ## 🎯 Overview
 
-Image Optimizer is a production-ready WordPress plugin demonstrating enterprise-level development practices. It provides intelligent image compression, WebP conversion, lazy loading, and REST API integration.
+ODR Image Optimizer is a production-ready WordPress plugin demonstrating enterprise-level development practices. It provides intelligent image compression, WebP conversion, lazy loading, and REST API integration.
 
 **Perfect for:** Portfolio showcasing, job interviews, freelance projects, or WordPress.org marketplace submission.
 
@@ -80,8 +80,8 @@ Complete REST API for programmatic access:
 ## 📁 Project Structure
 
 ```
-image-optimizer/
-├── image-optimizer.php              # Main plugin file
+odr-image-optimizer/
+├── odr-image-optimizer.php          # Main plugin file
 ├── README.md                        # User documentation
 ├── CONTRIBUTING.md                  # Contribution guidelines
 ├── CHANGELOG.md                     # Version history
@@ -143,22 +143,22 @@ image-optimizer/
 
 1. **Clone repository**
    ```bash
-   git clone https://github.com/odanree/image-optimizer.git
-   cd image-optimizer
+   git clone https://github.com/odanree/odr-image-optimizer.git
+   cd odr-image-optimizer
    ```
 
 2. **Copy to WordPress**
    ```bash
-   cp -r . /path/to/wp-content/plugins/image-optimizer/
+   cp -r . /path/to/wp-content/plugins/odr-image-optimizer/
    ```
 
 3. **Activate plugin**
    - Navigate to WordPress admin → Plugins
-   - Find "Image Optimizer"
+   - Find "ODR Image Optimizer"
    - Click "Activate"
 
 4. **Configure**
-   - Go to Image Optimizer → Settings
+   - Go to ODR Image Optimizer → Settings
    - Choose compression level
    - Enable WebP conversion (optional)
    - Enable lazy loading (optional)
@@ -166,13 +166,13 @@ image-optimizer/
 ### Usage
 
 **Dashboard:**
-1. Navigate to Image Optimizer → Dashboard
+1. Navigate to ODR Image Optimizer → Dashboard
 2. View your media library with optimization status
 3. Click "Optimize" on any image or select multiple for bulk operation
 4. Monitor statistics and compression results
 
 **Settings:**
-1. Navigate to Image Optimizer → Settings
+1. Navigate to ODR Image Optimizer → Settings
 2. Adjust compression level (Low/Medium/High)
 3. Toggle WebP conversion
 4. Toggle lazy loading
@@ -369,7 +369,7 @@ add_action('rest_api_init', function() {
 
 Found a bug or have a feature request?
 
-1. **Check existing issues**: [GitHub Issues](https://github.com/odanree/image-optimizer/issues)
+1. **Check existing issues**: [GitHub Issues](https://github.com/odanree/odr-image-optimizer/issues)
 2. **Report new issue** with:
    - Clear title
    - Detailed description
@@ -448,7 +448,7 @@ Perfect for job interviews, freelance portfolios, or marketplace submission.
 <p align="center">
   <strong>Built with ❤️ for WordPress developers</strong>
   <br>
-  <a href="https://github.com/odanree/image-optimizer/stargazers">⭐ Star this repo</a> •
-  <a href="https://github.com/odanree/image-optimizer/fork">🍴 Fork it</a> •
-  <a href="https://github.com/odanree/image-optimizer/issues">🐛 Report bug</a>
+  <a href="https://github.com/odanree/odr-image-optimizer/stargazers">⭐ Star this repo</a> •
+  <a href="https://github.com/odanree/odr-image-optimizer/fork">🍴 Fork it</a> •
+  <a href="https://github.com/odanree/odr-image-optimizer/issues">🐛 Report bug</a>
 </p>
